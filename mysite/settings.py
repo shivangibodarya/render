@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-ALLOWED_HOSTS = ['render-zp3w.onrender.com']
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +26,8 @@ SECRET_KEY = "django-insecure-rgo@489%mq&wrj$nj!o4p5^u5khw=(t!t4khufsj9f+l=7!i@o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['render-zp3w.onrender.com']
+
 
 
 # Application definition
