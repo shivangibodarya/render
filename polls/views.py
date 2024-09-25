@@ -17,7 +17,14 @@ with open(scaler_path, 'rb') as scaler_file:
     scaler = pk.load(scaler_file)
 
 def home(request):
-    return render(request, "index1.html")
+    return render(request, "index1.html", {"dropDownData": dropDownData})
+
+dropDownData = {"std" : range(1,13) , 
+                "hstd" : range(1,25) , 
+                "pscore" : range(100,0,-1) , 
+                "sleep" : range(1,25), 
+                "paper" : range(1,21) 
+                }
 
 def get(request):
     if request.method == 'GET':
@@ -33,7 +40,7 @@ def get(request):
             phone_regex(contact)
         except:
             data="please enter valid phone number"
-            return render(request,"index1.html",{"data":data})
+            return render(request,"index1.html",{"data":data,"dropDownData": dropDownData})
 
         Data.objects.create(name=name,contact=contact,std=std)
         HoursStudied = request.GET.get("HoursStudied")
@@ -48,10 +55,10 @@ def get(request):
                 predict = model.predict(pred_data_scaled)
                 predicted_value = int(predict[0])
                 print("Predicted Value:", predicted_value)
-                return render(request, "index1.html", {'prediction': predicted_value,"std":std,"data":data})
+                return render(request, "index1.html", {'prediction': predicted_value,"std":std,"data":data,"dropDownData": dropDownData})
             
         else:
-            return render(request, "index1.html", {'error': 'Please fill all the fields.'})
+            return render(request, "index1.html", {'error': 'Please fill all the fields.',"dropDownData": dropDownData})
 
     return render("/")
 
