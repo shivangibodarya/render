@@ -41,3 +41,7 @@ def get(request):
             return render(request, "index1.html", {'error': 'Please fill all the fields.'})
 
     return render("/")
+
+def Show(request):
+    data = Data.objects.all()
+    return render(request, "show.html", {"data": data})
