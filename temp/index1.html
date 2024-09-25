@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodePen - Glassmorphism login Form Tutorial in html css</title>
   
 
@@ -27,12 +29,18 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: #003366;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.logo{
+  margin: 15px;
 }
 .background{
 
     width: 430px;
-    height: 520px;
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
@@ -45,24 +53,25 @@ body{
     border-radius: 50%;
 }
 form{
-    margin: 120px 0px 120px 0px;
-    height: 900px;
-    width: 60%;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
+  width: 60%;
+}
+.form{
+  width: 100%;
+      /* position: absolute;
+      transform: translate(-50%,-50%);
+      top: 50%;
+      left: 50%; */
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 40px rgba(8,7,16,0.6);
+      padding: 50px 35px;
+    background-color: #fff;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
-  
+    
 }
 form *{
     font-family: 'Poppins',sans-serif;
-    color: #ffffff;
+    color: #ffbc06;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -72,38 +81,45 @@ form h3{
     font-weight: 500;
     line-height: 42px;
     text-align: center;
+    color: #003366;
+    font-weight: 700;
 }
 
 label{
     display: block;
     margin-top: 30px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
+    color: #003366;
+    font-weight: 700;
 }
 input{
     display: block;
     height: 50px;
     width: 100%;
-    background-color: rgba(255,255,255,0.07);
+    border: 1px solid #888888;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 300;
 }
 ::placeholder{
-    color: #e5e5e5;
+    color: #888888;
 }
 button{
-    margin-top: 50px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #080710;
-    padding: 15px 0;
+  margin: 30px 0;
+    background-color: #ffbc06;
+    color: #003366;
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+    display: inline-block;
+    padding: 10px 50px;
+}
+.form-btn{
+  text-align: center;
 }
 .social{
   margin-top: 30px;
@@ -127,40 +143,87 @@ button{
 .social i{
   margin-right: 4px;
 }
+.score{
+  margin-top: 20px;
+}
 
+@media (max-width:768px) {
+  form {
+    width: 85%;
+  }
+  .score {
+    font-size: 22px;
+  }
+}
+@media (max-width:576px) {
+  form h3 {
+    font-size: 26px;
+}
+}
+
+@media (max-width:480px) {
+  form h3 {
+        font-size: 16px;
+    }
+    .form {
+    padding: 15px;
+}
+.score {
+        font-size: 14px;
+    }
+    label {
+    margin-top: 15px;
+    font-size: 14px;
+}
+input {
+    height: 35px;
+    font-size: 14px;
+}
+}
     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
+ 
+    <div class="logo">
+      <a href=""><img width="100%" src="https://www.cdmi.in/assets/front/images/creative-logo-white.svg"></a>
     </div>
     <form action="data" method="get">
-        <h3>Deployment</h3>
+      <div class="form">
+        <h3>Creative Student Result</h3>
+
+        <label for="HoursStudied">Name</label>
+        <input type="text" name="name" placeholder="Enter YourName" id="username" required>
+
+        <label for="HoursStudied">Phone Number</label>
+        <input type="number" name="Contact" placeholder="Enter YourNumber" id="username" required>
+
+        <label for="HoursStudied">Std</label>
+        <input type="text" name="std" placeholder="Enter Std" id="username" required>
 
         <label for="HoursStudied">HoursStudied</label>
-        <input type="text" name="HoursStudied" placeholder="Email or Phone" id="username">
+        <input type="text" name="HoursStudied" placeholder="Email or Phone" id="username" required>
 
         <label for="PreviousScores">PreviousScores</label>
-        <input type="text" name="PreviousScores"placeholder="PreviousScores" id="PreviousScores">
+        <input type="text" name="PreviousScores"placeholder="PreviousScores" id="PreviousScores" required>
 
         <label for="Extracurricular Activities">Extracurricular Activities</label>
-        <input type="text" name="Extracurricular" placeholder="Extracurricular Activities" id="Extracurricular Activities">
+        <input type="text" name="Extracurricular" placeholder="Extracurricular Activities" id="Extracurricular Activities" required>
 
         <label for="Sleep Hours">Sleep Hours</label>
-        <input type="text" name="Sleep" placeholder="Sleep Hours" id="Sleep Hours">
+        <input type="text" name="Sleep" placeholder="Sleep Hours" id="Sleep Hours" required>
 
         <label for="Sample Question Papers Practiced">Sample Question Papers Practiced</label>
-        <input type="text" name="Sample" placeholder="Sample Question Papers Practiced" id="Sample Question Papers Practiced">
-
-       <button><input type="submit">Deploy</button> 
-            <h1>SCORE IS:={{prediction}}</h1>
+        <input type="text" name="Sample" placeholder="Sample Question Papers Practiced" id="Sample Question Papers Practiced" required>
+      </div>
+      <h1 align="center" class="score">Your {{std}} Score is := {{prediction}}</h1>
+      <div class="form-btn">
+        <button type="submit">Deploy</button> 
+       </div>
     </form>
 
 
 </body>
 </html>
-<!-- partial -->
   
 </body>
 </html>

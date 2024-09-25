@@ -3,6 +3,7 @@ import pickle as pk
 import pandas as pd
 import numpy as np
 import os
+from polls.models import Data
 from django.conf import settings
 model_path = os.path.join(settings.BASE_DIR, 'mysite', 'static', 'model', 'model.pkl')
 scaler_path = os.path.join(settings.BASE_DIR, 'mysite', 'static', 'model', 'scaler.pkl')
@@ -18,6 +19,10 @@ def home(request):
 
 def get(request):
     if request.method == 'GET':
+        name = request.GET.get("name")
+        contact=request.GET.get("Contact")
+        std=request.GET.get("std")
+        Data.objects.create(name=name,contact=contact,std=std)
         HoursStudied = request.GET.get("HoursStudied")
         PreviousScores = request.GET.get("PreviousScores")
         Sleep = request.GET.get("Sleep")
@@ -30,7 +35,7 @@ def get(request):
                 predict = model.predict(pred_data_scaled)
                 predicted_value = int(predict[0])
                 print("Predicted Value:", predicted_value)
-                return render(request, "index1.html", {'prediction': predicted_value})
+                return render(request, "index1.html", {'prediction': predicted_value,"std":std})
             
         else:
             return render(request, "index1.html", {'error': 'Please fill all the fields.'})
