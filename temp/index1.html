@@ -93,7 +93,7 @@ label{
     color: #003366;
     font-weight: 700;
 }
-input{
+input,select{
     display: block;
     height: 50px;
     width: 100%;
@@ -190,32 +190,57 @@ input {
     <form action="data" method="get">
       <div class="form">
         <h3>Creative Student Result</h3>
-
+        {% if data %}
+          <p>{{data}}</p>
+        {% endif %}
         <label for="HoursStudied">Name</label>
         <input type="text" name="name" placeholder="Enter YourName" id="username" required>
 
         <label for="HoursStudied">Phone Number</label>
-        <input type="number" name="Contact" placeholder="Enter YourNumber" id="username" required>
+        <input type="number"  name="Contact" placeholder="Enter YourNumber" id="username" required>
 
-        <label for="HoursStudied">Std</label>
-        <input type="text" name="std" placeholder="Enter Std" id="username" required>
+        <label for="HoursStudied">standard </label>
+        <input type="text" name="std" placeholder="Enter Your standard " id="username" required>
 
         <label for="HoursStudied">HoursStudied</label>
-        <input type="text" name="HoursStudied" placeholder="Email or Phone" id="username" required>
+        <input type="text" name="HoursStudied" placeholder="Your Study Hour" id="username" required>
 
         <label for="PreviousScores">PreviousScores</label>
         <input type="text" name="PreviousScores"placeholder="PreviousScores" id="PreviousScores" required>
 
         <label for="Extracurricular Activities">Extracurricular Activities</label>
-        <input type="text" name="Extracurricular" placeholder="Extracurricular Activities" id="Extracurricular Activities" required>
+        <select name="activities" id="">
+          <option value="Game">Select Activities</option>
+          <option value="Game">Game</option>
+          <option value="Dance">Dance</option>
+          <option value="Song">Listening Song</option>
+          <option value="Driving">Driving</option>
+          <option value="GYM">GYM</option>
+          <option value="Other">Other</option>
+        </select>
 
         <label for="Sleep Hours">Sleep Hours</label>
-        <input type="text" name="Sleep" placeholder="Sleep Hours" id="Sleep Hours" required>
+        <select name="Sleep" id="">
+          <option value="select">select hour</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
 
         <label for="Sample Question Papers Practiced">Sample Question Papers Practiced</label>
         <input type="text" name="Sample" placeholder="Sample Question Papers Practiced" id="Sample Question Papers Practiced" required>
-      </div>
+      </div>{% if std and prediction %}
       <h1 align="center" style="color: #ffbc06;" class="score">Your {{std}} Score is := {{prediction}}</h1>
+      {% endif %}
       <div class="form-btn">
         <button type="submit">Deploy</button> 
        </div>

@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 import pickle as pk
 import pandas as pd
 import numpy as np
@@ -19,9 +21,20 @@ def home(request):
 
 def get(request):
     if request.method == 'GET':
+        phone_regex = RegexValidator(
+       
+        regex=r'^[6-9]\d{9}$',
+        )
         name = request.GET.get("name")
         contact=request.GET.get("Contact")
         std=request.GET.get("std")
+        data=''
+        try: 
+            phone_regex(contact)
+        except:
+            data="please define valid data"
+            return render(request,"index1.html",{"data":data})
+
         Data.objects.create(name=name,contact=contact,std=std)
         HoursStudied = request.GET.get("HoursStudied")
         PreviousScores = request.GET.get("PreviousScores")
@@ -35,7 +48,7 @@ def get(request):
                 predict = model.predict(pred_data_scaled)
                 predicted_value = int(predict[0])
                 print("Predicted Value:", predicted_value)
-                return render(request, "index1.html", {'prediction': predicted_value,"std":std})
+                return render(request, "index1.html", {'prediction': predicted_value,"std":std,"data":data})
             
         else:
             return render(request, "index1.html", {'error': 'Please fill all the fields.'})
