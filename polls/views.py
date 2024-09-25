@@ -32,7 +32,7 @@ def get(request):
         try: 
             phone_regex(contact)
         except:
-            data="please define valid data"
+            data="please enter valid phone number"
             return render(request,"index1.html",{"data":data})
 
         Data.objects.create(name=name,contact=contact,std=std)
