@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['render-zp3w.onrender.com']
 
+# ALLOWED_HOSTS=[]
 
 # Application definition
 
