@@ -226,11 +226,11 @@
         <input type="text" name="name" placeholder="Enter YourName" id="username" required>
 
         <label for="Number">Phone Number</label>
-        <input type="number" name="Contact" placeholder="Enter YourNumber" id="username" required>
+        <input type="number" name="Contact" placeholder="Enter Number" id="username" required>
 
         <label for="standard">standard</label>
         <select name="std" id="">
-          <option value="select">select hour</option>
+          <option value="select" aria-placeholder="Number">select standard</option>
           {% for i in dropDownData.std %}
           <option value="{{i}}">{{ i }}</option>
           {% endfor %}
@@ -286,7 +286,7 @@
       <h1 align="center" style="color: #ffbc06;" class="score">Your {{std}} Score is := {{prediction}}</h1>
       {% endif %}
       <div class="form-btn">
-        <button type="submit">Deploy</button>
+        <button type="submit">Your Result</button>
       </div>
     </form>
 

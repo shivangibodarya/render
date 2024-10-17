@@ -21,6 +21,6 @@ from .import views
 urlpatterns = [
     path("",views.home),
     path("data",views.get),
-    path("show",views.Show),
+    path("# ALLOWED_HOSTS = ['localhost','render-zp3w.onrender.com']",views.Show),
     path("admin/", admin.site.urls),
 ]
