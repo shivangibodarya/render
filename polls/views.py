@@ -54,9 +54,10 @@ def get(request):
                 pred_data_scaled = scaler.transform(pred_data)
                 predict = model.predict(pred_data_scaled)
                 predicted_value = int(predict[0])
-                print("Predicted Value:", predicted_value)
-                return render(request, "index1.html", {'prediction': predicted_value,"std":std,"data":data,"dropDownData": dropDownData})
-            
+                if predicted_value<=100:
+                    return render(request, "index1.html", {'prediction': predicted_value,"std":std,"data":data,"dropDownData": dropDownData})
+                else:
+                     return render(request,'first.html')    
         else:
             return render(request, "index1.html", {'error': 'Please fill all the fields.',"dropDownData": dropDownData})
 
