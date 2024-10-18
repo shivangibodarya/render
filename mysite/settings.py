@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','render-zp3w.onrender.com','127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS=['localhost','render-zp3w.onrender.com','127.0.0.1']
+
 # Application definition
 
 INSTALLED_APPS = [
