@@ -41,8 +41,8 @@ def get(request):
         except:
             data="please enter valid phone number"
             return render(request,"index1.html",{"data":data,"dropDownData": dropDownData})
-
-        Data.objects.create(name=name,contact=contact,std=std)
+        if name and contact:
+            Data.objects.create(name=name,contact=contact,std=std)
         HoursStudied = request.GET.get("HoursStudied")
         PreviousScores = request.GET.get("PreviousScores")
         Sleep = request.GET.get("Sleep")
